@@ -63,6 +63,8 @@ async function loginData(req,res) {
 async function adminLogin(req, res) {
     try {
 
+        console.log("Request Body:", req.body);
+
         const { email, password } = req.body;
 
         const admin = await user.findOne({
@@ -71,6 +73,8 @@ async function adminLogin(req, res) {
             isAdmin: true
         });
 
+        console.log("Admin Found:", admin);
+
         if (!admin) {
             return res.status(401).json("Invalid Admin Credentials");
         }
@@ -78,6 +82,7 @@ async function adminLogin(req, res) {
         return res.status(200).json(admin);
 
     } catch (err) {
+        console.log(err);
         return res.status(500).json(err.message);
     }
 }
