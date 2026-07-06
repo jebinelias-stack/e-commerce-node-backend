@@ -60,6 +60,28 @@ async function loginData(req,res) {
     }
 }
 
+async function adminLogin(req, res) {
+    try {
+
+        const { email, password } = req.body;
+
+        const admin = await user.findOne({
+            email,
+            password,
+            isAdmin: true
+        });
+
+        if (!admin) {
+            return res.status(401).json("Invalid Admin Credentials");
+        }
+
+        return res.status(200).json(admin);
+
+    } catch (err) {
+        return res.status(500).json(err.message);
+    }
+}
 
 
-module.exports = {signupData,singleData,updateSingleData,deleteSingleData,loginData}
+
+module.exports = {signupData,singleData,updateSingleData,deleteSingleData,loginData,adminLogin}

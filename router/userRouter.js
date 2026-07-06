@@ -1,4 +1,4 @@
-const { signupData, loginData, singleData, updateSingleData, deleteSingleData } = require("../controller/userController")
+const { signupData, loginData, singleData, updateSingleData, deleteSingleData, adminLogin } = require("../controller/userController")
 const { verifyToken } = require("../tokenVerify")
 
 const router = require("express").Router()
@@ -13,5 +13,7 @@ router.put('/updateSingleData/:id',updateSingleData)
 router.delete('/deleteSingleData',deleteSingleData)
 
 router.post('/login',loginData)
+
+router.post("/adminLogin", adminLogin~)
 
 module.exports = router
