@@ -14,6 +14,6 @@ router.delete('/deleteSingleData',deleteSingleData)
 
 router.post('/login',loginData)
 
-router.post("/adminLogin", adminLogin~)
+router.post("/adminLogin", adminLogin)
 
 module.exports = router
