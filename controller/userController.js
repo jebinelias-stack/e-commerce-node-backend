@@ -60,33 +60,4 @@ async function loginData(req,res) {
     }
 }
 
-async function adminLogin(req, res) {
-    try {
-
-        console.log("Request Body:", req.body);
-
-        const { email, password } = req.body;
-
-        const admin = await user.findOne({
-            email,
-            password,
-            isAdmin: true
-        });
-
-        console.log("Admin Found:", admin);
-
-        if (!admin) {
-            return res.status(401).json("Invalid Admin Credentials");
-        }
-
-        return res.status(200).json(admin);
-
-    } catch (err) {
-        console.log(err);
-        return res.status(500).json(err.message);
-    }
-}
-
-
-
-module.exports = {signupData,singleData,updateSingleData,deleteSingleData,loginData,adminLogin}
+module.exports = {signupData,singleData,updateSingleData,deleteSingleData,loginData}
