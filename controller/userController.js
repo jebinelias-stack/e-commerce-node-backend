@@ -50,7 +50,7 @@ async function loginData(req,res) {
         if(!DataBaseData){
             return res.status(401).json("Email not found")
         }if(await argon.verify(DataBaseData.password,req.body.password)){
-            let token =await jwt.sign({id:DataBaseData._id},process.env.secKey,{expiresIn:'1d'})
+            let token =await jwt.sign({id:DataBaseData._id},process.env.secKey,{expiresIn:'1h'})
             return res.status(200).json({message:"Login success",token,userId:DataBaseData._id,isAdmin:DataBaseData.isAdmin})
         }else{
             return res.status(401).json("Incorrect Password")
